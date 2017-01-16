@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 
-<extension name="Hologram" version="1.3" >
+<extension name="Hologram" version="1.4" >
   <author>Nik Trevallyn-Jones</author>
   <date>August 2008</date>
 
@@ -40,6 +40,12 @@ unconditionally.
   </comments>
 
   <history>
+     <log version="1.4" date="May 2015" author="Lucas S">
+- Updates to match several API changes in AOI raytracer, affecting RTHologram
+- Now compatible with AOI 3.0.1 and 3.0.2, this version not back-compatible
+- Improved Toolhelp text
+- Spanish transation of plugin text
+     </log>
      <log version="1.3" date="August 2008" author="Nik TJ" >
 - Added createHologramTool
 - added sequence number to generated Hologram name
