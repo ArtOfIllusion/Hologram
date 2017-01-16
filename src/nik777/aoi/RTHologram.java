@@ -27,15 +27,10 @@ package nik777.aoi.hologram;
 
 import artofillusion.raytracer.*;
 
-import artofillusion.*;
 import artofillusion.object.*;
 import artofillusion.math.*;
 import artofillusion.texture.*;
 import artofillusion.material.*;
-
-import buoy.widget.*;
-
-import java.io.*;
 
 /**
  */
@@ -277,19 +272,20 @@ public class RTHologram extends RTObject
     { return bounds.transformAndOutset(fromLocal); }
     
     /**
-     *  Determine whether any part of the object lies within a bounding box.
+     *  Determine whether any part of the object lies within a node.
      */
-    public boolean intersectsBox(BoundingBox bb)
+    public boolean intersectsNode(OctreeNode node)
     {
-	if (!bb.intersects(getBounds()))
+		BoundingBox nodeBounds = node.getBounds();
+	if (!nodeBounds.intersects(getBounds()))
 	    return false;
     
-	// Check whether the box is entirely contained within this object.
+	// Check whether the node is entirely contained within this object.
     
-	bb = bb.transformAndOutset(toLocal);
-	if (bb.minx > bounds.minx && bb.maxx < bounds.maxx
-	    && bb.miny > bounds.miny && bb.maxy < bounds.maxy
-	    && bb.minz > bounds.minz && bb.maxz < bounds.maxz)
+	nodeBounds = nodeBounds.transformAndOutset(toLocal);
+	if (nodeBounds.minx > bounds.minx && nodeBounds.maxx < bounds.maxx
+	    && nodeBounds.miny > bounds.miny && nodeBounds.maxy < bounds.maxy
+	    && nodeBounds.minz > bounds.minz && nodeBounds.maxz < bounds.maxz)
 	    return false;
 
 	return true;
