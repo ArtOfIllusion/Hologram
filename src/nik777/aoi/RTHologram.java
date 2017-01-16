@@ -265,7 +265,7 @@ public class RTHologram extends RTObject
 	// return the surface intersection
 	return (si == SurfaceIntersection.NO_INTERSECTION
 		? si
-		: new HologramIntersection(si, li));
+		: new HologramIntersection(this, si, li));
 
 	//return si;
     }
@@ -313,21 +313,30 @@ public class RTHologram extends RTObject
     protected static class HologramIntersection implements SurfaceIntersection
     {
 	private SurfaceIntersection si, li;
+        private RTHologram hologram;
 
+	/* Seems to have no purpose or use. LJS
 	public HologramIntersection(SurfaceIntersection si)
 	{
 	    this.si = si;
 	    li = si;
 	}
+	*/
 
-	public HologramIntersection(SurfaceIntersection si,
+	public HologramIntersection(RTHologram holo, SurfaceIntersection si,
 				    SurfaceIntersection li)
 	{
+        this.hologram = holo;
 	    this.si = si;
 	    this.li = li;
 	}
 
-	public int numIntersections()
+        public RTObject getObject()
+        {
+            return hologram;
+        }
+
+        public int numIntersections()
 	{ return si.numIntersections(); }
 
 	public void intersectionPoint(int n, Vec3 p)
