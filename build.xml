@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+
+<project name="Hologram" default="dist" basedir=".">
+
+  <!-- set global properties for this build -->
+
+  <!--  name of this package - typically the same as the project build -->
+  <property name="package" value="Hologram" />
+
+  <!--
+	you will need to set this to point to to an existing ArtOfIllusion 
+	installation or build area, so the ArtOfIllusion classes are found.
+   -->
+
+  <property name="aoi" value = "ArtOfIllusion" />
+
+  <!--  these default to being in the AOI installation  -->
+  <!-- you will need to set this to point to a valid ArtOfIllusion.jar -->
+  <property name="aoijar" value="${aoi}/ArtOfIllusion.jar" />
+  <property name="rendjar" value="${aoi}/Plugins/Renderers.jar" />
+
+  <!-- set this to your name/handle/avatar -->
+  <property name="author" value="Nik Trevallyn-Jones" />
+
+  <!--  you won't normally need to change any of these  -->
+  <property name="src" value="src" />
+  <property name="build" value="build" />
+  <property name="raytracer" value="raytracer" />
+  <property name="docs" value="docs" />
+  <property name="dist" value="Plugins" />
+  <property name="help" value="help" />
+  <property name="src-package" value="${package}-src" />
+  <property name="src-build" value="${build}/${package}" />
+
+<!--  <property name="rend" value = "Renderers" /> -->
+<!--  <property name="ar" value = "AdvancedRendering" /> -->
+
+<!--  <property name="build.compiler" value="classic" /> -->
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}" />
+
+    <!-- Create the dist directory structure used for built jars -->
+    <mkdir dir="${dist}" />
+<!--    <mkdir dir="${dist}/Help" />  -->
+
+    <!-- Create the docs directory structure used by documentation -->
+    <mkdir dir="${docs}" />
+
+<!--
+    <ant antfile="Renderers.xml" target="init" inheritAll="false" />
+    <ant dir="${ar}" target="init" inheritAll="false" />
+-->
+
+  </target>
+
+  <target name="compile" depends="init">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" classpath="${aoijar}:${rendjar}"
+	debug="on" target="1.4" source="1.4" />
+
+    <!-- compile additional raytracer classes -->
+<!--
+    <javac srcdir="${raytracer}" destdir="${rend}/build"
+        classpath="${aoijar}:${rendjar}" debug="on" target="1.4" source="1.4"/>
+
+    <javac srcdir="${raytracer}" destdir="${ar}/build"
+        classpath="${aoijar}:${rendjar}" debug="on" target="1.4" source="1.4"/>
+-->
+  </target>
+
+  <target name="dist" depends="compile">
+
+    <!-- create the jar file -->
+    <jar jarfile="${dist}/${package}.jar" basedir="${build}" >
+       <fileset dir="${src}"
+          includes="extensions.xml, *.properties, icons/**" />
+       <zipfileset prefix="help" dir="${help}/help" />
+    </jar>
+
+    <!-- create the help file -->
+<!--    <jar jarfile="${dist}/Help/${package}.zip" basedir="${help}" /> -->
+
+    <!-- create the new Renderers jar file -->
+<!--    <unjar src="${rendjar}" dest="${rend}/build" /> -->
+
+    <!--  *sigh* Needed so the copy in the Renderers.xml build file works -->
+<!--
+    <copy todir="${rend}/src" >
+       <fileset dir="${rend}/build" includes="plugins, Renderers.xml" />
+    </copy>
+
+    <ant antfile="Renderers.xml" target="dist" inheritAll="false" >
+       <propertyset >
+          <propertyref name="aoijar" />
+       </propertyset>
+    </ant>
+-->
+
+    <!-- create the new AR jar file -->
+<!--
+    <unjar src="${aoi}/Plugins/AdvancedRendering.jar" dest="${ar}/build" />
+    <ant dir="${ar}" target="dist" inheritAll="false" >
+       <propertyset >
+          <propertyref name="aoi" />
+       </propertyset>
+    </ant>
+-->
+
+    <!-- copy the AR plugin across -->
+<!--    <copy file="${ar}/Plugins/${ar}.jar" todir="${dist}" /> -->
+
+    <!-- copy the XML file -->
+<!--
+    <copy todir="${dist}">
+      <fileset dir="${src}" includes="${package}.xml" /> 
+    </copy>
+-->
+  </target>
+
+  <target name="source">
+    <!-- create the source archives  -->
+    <zip file="./${src-package}.zip" >
+       <zipfileset prefix="${package}/src" dir="${src}" />
+<!--
+       <zipfileset prefix="${package}/raytracer" dir="${raytracer}" />
+       <zipfileset prefix="${package}/${rend}/src" dir="${rend}/src" />
+       <zipfileset prefix="${package}/${ar}" dir="${ar}"
+           includes="src/*, lib/*, build.xml"/>
+-->
+       <zipfileset prefix="${package}" dir="."
+          includes="build.xml, Renderers.xml" />
+    </zip>
+       
+    <tar tarfile="./${src-package}.tz" compression="gzip">
+       <tarfileset prefix="${package}/src" dir="${src}" />
+<!--
+       <tarfileset prefix="${package}/raytracer" dir="${raytracer}" />
+       <tarfileset prefix="${package}/${rend}/src" dir="${rend}/src" />
+       <tarfileset prefix="${package}/${ar}" dir="${ar}"
+           includes="src/*, lib/*, build.xml" />
+-->
+       <tarfileset prefix="${package}" dir="."
+           includes="build.xml, Renderers.xml" />
+    </tar>
+  </target>
+
+  <target name="docs" depends="init">
+    <javadoc packagenames="artofillusion.*"
+        sourcepath="${src}"
+        defaultexcludes="yes"
+        destdir="${docs}"
+        author="true"
+        version="true"
+        use="true"
+        source="1.4"
+        windowtitle="${package}"
+	public="true">
+      <doctitle><![CDATA[<h1>${package}</h1>]]></doctitle>
+      <bottom><![CDATA[<i>Copyright &#169; 2005 by ${author}.</i>]]></bottom>
+    </javadoc>
+  </target>
+
+  <target name="clean">
+    <!-- Delete the ${build} and ${docs} directory trees -->
+    <delete dir="${build}" />
+    <delete dir="${docs}" />
+    <delete dir="${dist}" />
+    <delete file="./${src-package}.zip" />
+    <delete file="./${src-package}.tz" />
+
+    <!-- clean subprojects -->
+    <ant antfile="Renderers.xml" target="clean" inheritAll="false" />
+    <ant dir="${ar}" target="clean" inheritAll="false" />
+  </target>
+</project>
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" standalone="yes"?>
+
+<extension name="Hologram" version="1.3" >
+  <author>Nik Trevallyn-Jones</author>
+  <date>August 2008</date>
+
+  <import name="Renderers" />
+
+  <plugin class="nik777.aoi.hologram.HologramPlugin" />
+
+  <resource type="UITheme" id="Hologram" name="icons/theme.xml"/>
+
+  <resource type="TranslateBundle" id="Hologram" name="Hologram" />
+
+  <resource type="help" id="Hologram" name="help/Hologram.hs" />
+  <resource type="help" id="Hologram" name="help/Hologram_de.hs" locale="DE" />
+
+<!--
+  !! NTJ - Hologram is now built as a normal plugin
+
+  <filter nonStandard="disable" />
+
+  <fileset>
+     <file>Renderers.jar</file>
+     <file todir="Help">Hologram.zip</file>
+  </fileset>
+-->
+
+  <description>
+A hologram object - a projection of a 3D object from 2D data.
+
+An object which renders as a 3D object, even though it uses only
+a 2D image. This is a standard 'trick' for crowds and forests in animations.
+  </description>
+
+  <comments>
+This plugin was originally flagged as non-standard. With version 1.1 (and AOI
+2.6), this plugin is now considered standard, and safe to install
+unconditionally.
+  </comments>
+
+  <history>
+     <log version="1.3" date="August 2008" author="Nik TJ" >
+- Added createHologramTool
+- added sequence number to generated Hologram name
+     </log>
+     <log version="1.2" date="August 2008" author="Nik TJ" >
+- included the German helpset translation (thanks Harald!)
+- removed the beta flag     
+     </log>
+     <log version="1.2b4" date="June 2008" author="Nik TJ" >
+- changed hologra rotation axis to be Local instead of Global
+  This makes results more intuitive when a Hologram is not perfectly vertical. 
+     </log>
+     <log version="1.2b3" date="June 2008" author="Nik TJ" >
+- fixed problem of reversed coordinate system conversion introduced with the
+  AOI 2.6 compatability update.
+     </log>
+     <log version="1.2b2" date="June 2008" author="Nik TJ" >
+- fixed NullPointer exception when adding a texture
+     </log>
+     <log version="1.2" date="June 2008" author="Nik TJ" >
+- Changes to how textures are initialised - fixing problem reported by Art.
+     </log>
+     <log version="1.1" date="Feb 2008" author="Nik TJ" >
+- Version for AOI 2.6 uses new RTObjectFactory interface
+     </log>
+     <log version="1.0" date="Oct 2007" author="Nik TJ" >
+- Interim version
+  -- Uses DynamicFactory for allocation
+     </log>
+     <log version="0.3" date="Sept 2007" author="Nik TJ" >
+- Updates for AOI 2.5 final
+     </log>
+     <log version="0.2" date="June 2007" author="Nik TJ" >
+- Updates for AOI 2.5
+     </log>
+     <log version="0.1" date="May 2007" author="Nik TJ" >
+- Initial release
+     </log>
+  </history>
+
+</extension>
+
