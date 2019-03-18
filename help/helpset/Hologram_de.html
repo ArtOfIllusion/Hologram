@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>GettingStarted</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="CREATED" CONTENT="20070510;21101800">
+	<META NAME="CHANGEDBY" CONTENT="Harald G&ouml;tz">
+	<META NAME="CHANGED" CONTENT="20080804;10205135">
+	<STYLE>
+	<!--
+		P { color: #000000 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" BGCOLOR="#f8e89e" DIR="LTR">
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="tahoma"><BR><STRONG><FONT SIZE=5><FONT COLOR="#3300cc">Hologramm
+Objekte</FONT></FONT></STRONG></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><SPAN LANG="de-DE">Als
+<B>Hologramm</B> (griech. <I>holos</I> f&uuml;r <I>ganz, vollst&auml;ndig</I>,
+<I>gramma</I> f&uuml;r <I>Botschaft, Nachricht, Zeichen</I>)
+bezeichnet man eine &ndash; in der Regel mittels </SPAN><A HREF="http://de.wikipedia.org/wiki/Koh&auml;renz_%28Physik%29"><SPAN LANG="de-DE">koh&auml;rentem</SPAN></A>
+<A HREF="http://de.wikipedia.org/wiki/Laser"><SPAN LANG="de-DE">Laserlicht</SPAN></A>
+<SPAN LANG="de-DE">hergestellte &ndash; </SPAN><A HREF="http://de.wikipedia.org/wiki/Fotografie"><SPAN LANG="de-DE">fotografische
+Aufnahme</SPAN></A><SPAN LANG="de-DE">, die nach Ausarbeitung und
+Beleuchtung mit gleichartigem Licht ein echtes dreidimensionales
+Abbild des Ursprungsgegenstandes wiedergibt. (Quelle: Wikipedia)</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="tahoma"><SPAN LANG="de-DE"><BR></SPAN><STRONG><SPAN LANG="de-DE"><FONT SIZE=4><FONT COLOR="#ff6633">1.&Uuml;berblick</FONT></FONT></SPAN></STRONG>
+<SPAN LANG="de-DE"><BR><BR>Hologramm Objekte werden bereit gestellt
+von einem Plugin (dem Hologram Plugin). Wie der Name suggeriert
+erstellen Hologramm Objekte ein projiziertes 3D Bild aus 2D Daten.
+<BR><BR>Die typische Nutzung des Hologramm Objektes ist es z&uuml;gig
+eine Menge von z.B. B&auml;umen f&uuml;r einen Wals zu erstellen.
+W&auml;hrend Hologramme im 3D Raum existieren und auch Schatten
+werfen, wie Sie das von 3D Objekten gewohnt sind, sind sie eben nicht
+vollst&auml;ndige 3D Objekte und haben entsprechende Limitationen. </SPAN></FONT>
+</P>
+<P LANG="de-DE" ALIGN=LEFT><FONT FACE="tahoma"><FONT SIZE=3>Es ist
+wichtig 2 grundlegende Dinge &uuml;ber Hologramm Objekte zu
+verstehen: </FONT></FONT>
+</P>
+<UL>
+	<LI><P LANG="de-DE" STYLE="margin-bottom: 0cm"><FONT FACE="tahoma"><FONT SIZE=3>Hologramm
+	Objekte werden nur von Raytracern gerendert. Alle anderen Renderer
+	zeigen das Hologramm als Zylinder. </FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE"><FONT FACE="tahoma">Hologramm Objekte werden
+	immer so dargestellt das sie zum Betrachter zeigen. Deshalb macht es
+	keinen Sinn zu versuchen Texturen anderen Fl&auml;chen als der
+	Vorderseite (front face) zu zuweisen. </FONT>
+	</P>
+</UL>
+<P><FONT FACE="tahoma"><SPAN LANG="de-DE"><BR><BR></SPAN><STRONG><SPAN LANG="de-DE"><FONT SIZE=4><FONT COLOR="#ff6633">2.
+Erstellung </FONT></FONT></SPAN></STRONG><SPAN LANG="de-DE"><BR><BR>Erstellen
+Sie ein neues Hologram Objekt, indem Sie das &quot;<I>Hologram
+Object</I>&quot; aus dem <I>Werkzeug</I> Men&uuml; w&auml;hlen. <BR><BR><IMG SRC="../images/hologram1.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=600 HEIGHT=450 BORDER=0>
+<BR><BR>Hologramm Objekte werden als Zylinder dargestellt in der
+Weite und H&ouml;he des projizierten Bildes. Wenn Sie die H&ouml;he
+oder Breite des Zylinders &auml;ndern (also die X und Y Gr&ouml;&szlig;e
+des Hologramm Objektes), &auml;ndern Sie damit auch die
+korrespondierende Gr&ouml;&szlig;e des entstehenden Hologramms.<BR><BR><IMG SRC="../images/hologram2.png" NAME="a hologram object" ALIGN=BOTTOM WIDTH=600 HEIGHT=450 BORDER=0>
+<BR><BR></SPAN><STRONG><SPAN LANG="de-DE"><FONT SIZE=4><FONT COLOR="#ff6633">3.
+Texturierung</FONT></FONT></SPAN></STRONG><SPAN LANG="de-DE"><BR><BR>Hologramm
+Objekte k&ouml;nnen mit Texturen versehen werden und in der Tat ist
+es nicht sinnvoll sie ohne Texturen zu belassen. Da man normalerweise
+mehr als ein Hologramm in der Szene hat (nicht wie bei Prinzessin
+Leia), ist es ebenso sinnvoll die Textur zu benennen, so das sie gut
+wiederverwendet werden kann. Sie k&ouml;nnen daf&uuml;r eine
+bildbasierte (pixelbasierte) Textur w&auml;hlen oder eine prozedurale
+2D Textur. Welche Sie w&auml;hlen h&auml;ngt von Ihren Vorlieben und
+Zielen ab. <BR><BR><IMG SRC="../images/hologram3.png" NAME="create a texture" ALIGN=BOTTOM WIDTH=300 HEIGHT=225 BORDER=0>
+<BR><BR><IMG SRC="../images/hologram4.png" NAME="create a texture" ALIGN=BOTTOM WIDTH=300 HEIGHT=225 BORDER=0>
+<BR><BR>Wenn Sie entscheiden eine bildbasierte Textur zu verwenden,
+dann werden Sie es vermutlich in etwa so versuchen um zu starten: <BR><BR><IMG SRC="../images/hologram5.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=600 HEIGHT=400 BORDER=0>
+</SPAN></FONT>
+</P>
+<P ALIGN=LEFT><FONT FACE="tahoma"><FONT SIZE=3>Wichtig: </FONT></FONT>
+</P>
+<UL>
+	<LI><P LANG="de-DE" STYLE="margin-bottom: 0cm"><FONT FACE="tahoma"><FONT SIZE=3>Gleich
+	zu Beginn deaktivieren Sie alle <I><SPAN LANG="en-US">tile</SPAN></I>
+	und <I><SPAN LANG="en-US">mirror</SPAN></I> Optionen. </FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE"><FONT FACE="tahoma"><FONT SIZE=3>Sie werden ggf.
+	eine Transparenzmaske erstellen wollen und diese dem
+	Transparenzkanal zuweisen - das garantiert, das dort wo das
+	Hologramm transparent sein soll keine Pixel entstehen. </FONT></FONT>
+	</P>
+</UL>
+<P><FONT FACE="tahoma"><SPAN LANG="de-DE"><BR><BR>Wenn Sie mehr
+Flexibilit&auml;t w&uuml;nschen, entscheiden Sie sich f&uuml;r eine
+prozedurale 2D Textur. In diesem Fall starten Sie mit dem Bildmodul
+in dieser Textur. Wenn das Bild einen Transparenzkanal aufweist (Tif
+und PNG k&ouml;nnen das) und einen transparenten Hintergrund hat,
+k&ouml;nnen Sie das Setup so gestalten wie hier dargestellt.<BR><BR><IMG SRC="../images/hologram6.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=400 HEIGHT=500 BORDER=0>
+<BR><BR>Andererseits m&uuml;ssen Sie sonst ein einem separaten
+Bildeditor (GIMP, PS) eine Transparenzmaske erzeugen und das Setup
+wie hier unten gestalten: <BR><BR><IMG SRC="../images/hologram7.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=400 HEIGHT=500 BORDER=0>
+<BR><BR>Wenn Sie die Textur einmal erstellt und benannt haben, k&ouml;nnen
+Sie diese ihrem Hologramm Objekt zuweisen.<BR><B>Notiz:</B> Bedenken
+Sie dass das Hologramm Plugin die Textur nicht in der
+Szenendarstellung anzeigt oder wenn es mit dem Raster Renderer
+gerendert wird.<BR><BR><IMG SRC="../images/hologram8.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=600 HEIGHT=400 BORDER=0>
+<BR>Beachten Sie das das im obigen Bild die Hologramm Objekte als
+Zylinder dargestellt werden, aber gerendert werden sie als ihre
+Projektionen vom Raytracer (hier in der kleinen Vorschau oben rechts)
+- stellen Sie sich bei Ihrem Raytracer R2D2 der benutzt wird um ein
+Hologramm / Holografie darzustellen. <BR><BR></SPAN><STRONG><SPAN LANG="de-DE"><FONT SIZE=4><FONT COLOR="#ff6633">4.
+Tipps and Tricks </FONT></FONT></SPAN></STRONG><SPAN LANG="de-DE"><BR><BR>In
+AOI sind bildbasierte Texturen als MappedTextures implementier<SPAN STYLE="text-decoration: none">t,
+was normaler</SPAN>weise bedeutet das diese auch verlangen, das man
+das Mapping reguliert (H&ouml;he und Breite ect.) wann immer das
+Objekt in der Gr&ouml;&szlig;e ge&auml;ndert wird. &bdquo;<I>Hologram
+Objects</I>&ldquo; sind so eingestellt, das sie das automatisch
+erledigen. Wenn Sie also die H&ouml;he des Hologramm Objektes &auml;ndern,
+wird die Textur entsprechend angepasst. Wenn Sie einmal die Gr&ouml;&szlig;e
+des Hologramm Objektes ver&auml;ndern und die Gr&ouml;&szlig;e ist
+nicht richtig angepasst (z.B. in der Vorschau) w&auml;hlen Sie
+einfach das Hologramm Objekt, &ouml;ffnen dessen Texturdialog und
+klicken auf OK. Das appliziert die Textur erneut und behebt das
+Problem im Normalfall. Das sollte in der Zukunft - wenn kleine
+Codefehler ausgeb&uuml;gelt sind, nicht mehr n&ouml;tig sein. <BR><BR>Wenn
+Sie einen schwarzen Streifen an einer oder mehreren Kanten des
+Hologramm Objektes sehen, dann ist es wahrscheinlich das Sie die
+Bildskalierung &auml;ndern m&uuml;ssen, oder &ndash;
+unwahrscheinlicher - die Skalierung im Textur Mapping (-dialog).
+<BR>&Auml;hnlich ist es wenn Sie schwarze Artefakte oder zuf&auml;llig
+auftretende schwarze Fl&auml;chen an der Ober- oder Unterseite des
+Hologramm Objektes entdecken, dann versuchen Sie die Y-Skalierung in
+den Textureigenschaften zu vergr&ouml;&szlig;ern. Es ist m&ouml;glich
+das es durch Rundungsfehler zu diesen Ungenauigkeiten kommt und in
+einem Beispiel konnte ein hinzuf&uuml;gen einer 0,001 zu der Gr&ouml;&szlig;e
+das Problem beheben. <BR><BR>F&uuml;r detailliertere Informationen
+schauen Sie bitte ins AoI Manual. </SPAN></FONT>
+</P>
+</BODY>
+</HTML>

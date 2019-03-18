@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>GettingStarted</TITLE>
+	<META NAME="GENERATOR" CONTENT="Quanta Plus (Linux)">
+	<META NAME="CREATED" CONTENT="20070510;21101800">
+	<META NAME="CHANGED" CONTENT="20070510;23012600"><STYLE>
+	<!--
+		TD P { color: #000000 }
+		P { color: #000000 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" BGCOLOR="#f8e89e" DIR="LTR">
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT SIZE=3><FONT FACE="tahoma"><BR>
+<STRONG><FONT SIZE=5><FONT COLOR="#3300cc">
+Hologram Objects
+</FONT></FONT></STRONG>
+<BR><BR><STRONG><FONT SIZE=4><FONT COLOR="#ff6633">
+1.Overview
+</FONT></FONT></STRONG>
+<BR><BR> Hologram objects are provided by the 'Hologram' plugin. As their name suggests, Hologram objects create a 3D projected image from 2D data.
+<br><br>The Typical use of Hologram objects is to quickly create a crowd or forest effect using 2D images. While Holograms do exist in 3D space, and do cast shadows as you'd expect a 3D object to do, they are not full 3D objects and so have limitations.
+<p align="left">It is important to understand two main things about hologram objects:
+<ul>
+<LI>
+Hologram objects are only rendered by Raytracer renderers. All other renderers display a hologram as a cylinder.
+</LI>
+<li>
+Hologram objects are always aligned so that they face the viewer. Hence there is no point trying to set textures for anything other than the front face.
+</li>
+</ul>
+<br><br><STRONG><FONT SIZE=4><FONT COLOR="#ff6633">
+2. Creating
+</FONT></FONT></STRONG>
+<br><br>Create a new Hologram object using the "<i>Hologram Object</i>" entry in the "<i>Tools</i>" menu.
+<BR><BR><IMG SRC="../images/hologram1.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=600 HEIGHT=450 BORDER=0>
+<BR><BR>Hologram objects are displayed as a cylinder of the height and width of the projected image. If you change the height or width of the cylinder (or change the Y or X size of the hologram object's properties) you will change the corresponding dimension of the resulting hologram.
+<BR><BR><IMG SRC="../images/hologram2.png" NAME="a hologram object" ALIGN=BOTTOM WIDTH=600 HEIGHT=450 BORDER=0>
+
+<br><br><STRONG><FONT SIZE=4><FONT COLOR="#ff6633">
+3. Texturing
+</FONT></FONT></STRONG>
+<br><br>Hologram objects can have textures applied to them, and in fact they do nothing useful without a texture. Since you are likely to have more than  one hologram in a scene (unlike Princess Leia), it makes sense to create and name the texture so it can easily be reused.
+You can use an ImageMapped texture, or a 2D procedural texture. Which you choose depends on your preferences, and what you need from the texture.
+<BR><BR><IMG SRC="../images/hologram3.png" NAME="create a texture" ALIGN=BOTTOM WIDTH=300 HEIGHT=225 BORDER=0>
+<BR><BR><IMG SRC="../images/hologram4.png" NAME="create a texture" ALIGN=BOTTOM WIDTH=300 HEIGHT=225 BORDER=0>
+<br><br>If you choose to make it an ImageMapped texture, then you will want to set it up something like this to begin with:
+<BR><BR><IMG SRC="../images/hologram5.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=600 HEIGHT=400 BORDER=0>
+<p align="left">Important notes:
+<br>
+<ul>
+<LI>
+To begin with, disable all <i>tile</i> and <i>mirror</i> options.
+</LI>
+<li>
+You will probably want to make a transaprency mask and apply it to the transparency channel. This ensures that the hologram is transparent wherever the there are no image pixels.
+</li>
+</ul>
+<br><br>If you want more flexibility, then you may decide that a procedural texture is better for your purposes. In this case, you will probably want to start with an image module in the texture. If your image has a transparency channel and a transparent background, then you can set your texture up like this 
+<BR><BR><IMG SRC="../images/hologram6.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=400 HEIGHT=500 BORDER=0>
+<br><br>Otherwise, you will need to make a separate image to use as the transparency mask, and set you texture up like this:
+<BR><BR><IMG SRC="../images/hologram7.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=400 HEIGHT=500 BORDER=0>
+
+<br><br>Once you have created and named your texture, you can apply it to your hologram object.
+<br><b>Note:</b> Remember that the hologram will <i>not</i> display its texture in the scene view, nor when rendered with the Raster renderer.
+<BR><BR><IMG SRC="../images/hologram8.png" NAME="create a hologram" ALIGN=BOTTOM WIDTH=600 HEIGHT=400 BORDER=0>
+<br>Notice that in the image above the hologram objects are displayed as cylinders in the scene view, but are rendered as their projections by the Raytracer in the previewer (think of the Raytracer as an R2D2 which is used to play a hologram).
+
+<br><br><STRONG><FONT SIZE=4><FONT COLOR="#ff6633">
+4. Tips and Tricks
+</FONT></FONT></STRONG>
+<br><br>In AOI, image-based textures are implemented as MappedTextures and in fact AOI normally requires you to adjust the texture mapping whenever you change the dimensions of the associated object. Hologram Objects attempt to automate this for you, so if you increase the height of a Hologram object, the texture mapping is adjusted to suit. If you change a dimension of a hologram object and its projected image (eg in the preview) does not change to match, simply select the hologram object, open its texture mapping window, and click OK. This causes the texture mapping to be reapplied, and usually fixes any problems. Obviously as wrinkles in the code are ironed out, this procedure should no longer be needed.
+<br><br>If you see a black stripe at the edge (left, right top or bottom) of your hologram when it is rendered, then you probably need to adjust either the image scale or (less likely) the scale in the texture mapping.
+<br>Similarly, if you see black artifacts or the occasional black face on the top or bottom of a hologram rendering, then try increasing the Y scale value in the Texture image properties (as distinct from the TextureMapping properties). It seems there is the possibility of rounding errors, and in one example, adding 0.01 to what otherwise seemed to be the correct Y size cured the problem.
+<br><br>For more detailed information on textures, see the AOI manual.
+</FONT>
+</BODY>
+</HTML>
