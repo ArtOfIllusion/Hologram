@@ -46,15 +46,9 @@
 
     <!-- Create the dist directory structure used for built jars -->
     <mkdir dir="${dist}" />
-<!--    <mkdir dir="${dist}/Help" />  -->
 
     <!-- Create the docs directory structure used by documentation -->
     <mkdir dir="${docs}" />
-
-<!--
-    <ant antfile="Renderers.xml" target="init" inheritAll="false" />
-    <ant dir="${ar}" target="init" inheritAll="false" />
--->
 
   </target>
 
@@ -63,14 +57,6 @@
     <javac srcdir="${src}" destdir="${build}" classpath="${aoijar}:${rendjar}"
 	debug="on" target="1.6" source="1.6" />
 
-    <!-- compile additional raytracer classes -->
-<!--
-    <javac srcdir="${raytracer}" destdir="${rend}/build"
-        classpath="${aoijar}:${rendjar}" debug="on" target="1.4" source="1.4"/>
-
-    <javac srcdir="${raytracer}" destdir="${ar}/build"
-        classpath="${aoijar}:${rendjar}" debug="on" target="1.4" source="1.4"/>
--->
   </target>
 
   <target name="dist" depends="compile">
@@ -82,44 +68,6 @@
        <zipfileset prefix="help" dir="${help}" />
     </jar>
 
-    <!-- create the help file -->
-<!--    <jar jarfile="${dist}/Help/${package}.zip" basedir="${help}" /> -->
-
-    <!-- create the new Renderers jar file -->
-<!--    <unjar src="${rendjar}" dest="${rend}/build" /> -->
-
-    <!--  *sigh* Needed so the copy in the Renderers.xml build file works -->
-<!--
-    <copy todir="${rend}/src" >
-       <fileset dir="${rend}/build" includes="plugins, Renderers.xml" />
-    </copy>
-
-    <ant antfile="Renderers.xml" target="dist" inheritAll="false" >
-       <propertyset >
-          <propertyref name="aoijar" />
-       </propertyset>
-    </ant>
--->
-
-    <!-- create the new AR jar file -->
-<!--
-    <unjar src="${aoi}/Plugins/AdvancedRendering.jar" dest="${ar}/build" />
-    <ant dir="${ar}" target="dist" inheritAll="false" >
-       <propertyset >
-          <propertyref name="aoi" />
-       </propertyset>
-    </ant>
--->
-
-    <!-- copy the AR plugin across -->
-<!--    <copy file="${ar}/Plugins/${ar}.jar" todir="${dist}" /> -->
-
-    <!-- copy the XML file -->
-<!--
-    <copy todir="${dist}">
-      <fileset dir="${src}" includes="${package}.xml" /> 
-    </copy>
--->
   </target>
 
   <target name="source">
@@ -173,9 +121,6 @@
     <delete file="./${src-package}.zip" />
     <delete file="./${src-package}.tz" />
 
-    <!-- clean subprojects 
-    <ant antfile="Renderers.xml" target="clean" inheritAll="false" />
-    <ant dir="${ar}" target="clean" inheritAll="false" /> -->
   </target>
 </project>
 
